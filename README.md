@@ -26,13 +26,27 @@ A fast, minimal, and visually clear web tool that lets developers test, visualiz
 - Status code indicators with color coding
 - Response time and size metrics
 
-✅ **🧩 AI Auto Type Generator (NEW!)**
+✅ **🧩 AI Auto Type Generator**
 - Generate TypeScript interfaces from API responses
 - Create Zod validation schemas automatically
 - Generate Python dataclasses
 - AI-powered type inference with GPT-4
 - Copy to clipboard or download as files
 - Intelligent caching and validation
+
+✅ **🤖 AI Conversation & Explanation**
+- Chat with AI about your API responses
+- Get detailed explanations of API behavior
+- Ask questions about response structure and data
+- Context-aware AI assistance for debugging
+- Conversation history with session management
+
+✅ **📚 API Context Management**
+- Upload and manage API documentation
+- Context-aware AI responses based on your docs
+- Support for multiple API contexts
+- Smart context injection for better AI assistance
+- File upload for comprehensive API knowledge
 
 ✅ **Request History**
 - Automatic saving of all requests to localStorage
@@ -59,10 +73,10 @@ A fast, minimal, and visually clear web tool that lets developers test, visualiz
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/api-playground.git
+git clone https://github.com/RobertIonutF/ai-playground.git
 
 # Navigate to project directory
-cd api-playground
+cd ai-playground
 
 # Install dependencies
 npm install
@@ -145,16 +159,27 @@ Body:
 ### Project Structure
 
 ```
-api-playground/
+ai-playground/
 ├── app/
 │   ├── api/
 │   │   ├── request/
 │   │   │   └── route.ts          # API proxy handler
-│   │   └── ai/
-│   │       ├── explain/
-│   │       │   └── route.ts      # AI explanation endpoint
-│   │       └── generate-types/
-│   │           └── route.ts      # AI type generation endpoint
+│   │   ├── ai/
+│   │   │   ├── converse/
+│   │   │   │   └── route.ts      # AI conversation endpoint
+│   │   │   ├── explain/
+│   │   │   │   └── route.ts      # AI explanation endpoint
+│   │   │   └── generate-types/
+│   │   │       └── route.ts      # AI type generation endpoint
+│   │   └── context/
+│   │       ├── fetch/
+│   │       │   └── route.ts      # Context retrieval endpoint
+│   │       ├── list/
+│   │       │   └── route.ts      # Context listing endpoint
+│   │       ├── set/
+│   │       │   └── route.ts      # Context setting endpoint
+│   │       └── upload/
+│   │           └── route.ts      # Context file upload endpoint
 │   ├── layout.tsx                 # Root layout with dark mode
 │   ├── page.tsx                   # Main application page
 │   └── globals.css                # Global styles
@@ -163,17 +188,32 @@ api-playground/
 │   ├── ResponseViewer.tsx         # Right panel - response display
 │   ├── TypeGeneratorView.tsx      # AI type generator component
 │   ├── AiExplanationView.tsx      # AI explanation component
+│   ├── ConversationPanel.tsx      # AI conversation interface
+│   ├── ApiContextLoader.tsx       # Context management component
+│   ├── ApiContextSelector.tsx     # Context selection component
+│   ├── ApiKnowledgeViewer.tsx     # Context viewer component
 │   ├── HistorySidebar.tsx         # History sidebar
+│   ├── JsonViewer.tsx             # Enhanced JSON viewer
+│   ├── LoadingSkeleton.tsx        # Loading states
+│   ├── StatusBadge.tsx            # Status indicators
 │   └── ui/                        # Shadcn UI components
 ├── hooks/
-│   └── useLocalStorage.ts         # localStorage hook
+│   ├── useLocalStorage.ts         # localStorage hook
+│   ├── useApiContext.ts           # API context management
+│   ├── useConversationSession.ts  # Conversation session management
+│   └── useMediaQuery.ts           # Media query hook
 ├── lib/
-│   ├── api-utils.ts               # Utility functions
+│   ├── api-utils.ts               # API utility functions
+│   ├── api-parser.ts              # API response parsing
 │   ├── ai-utils.ts                # AI-specific utilities
+│   ├── context-store.ts           # Context storage management
+│   ├── context-injection.ts       # Context injection utilities
+│   ├── conversation-utils.ts      # Conversation utilities
 │   └── utils.ts                   # Shadcn utils
 ├── types/
 │   └── api.ts                     # TypeScript interfaces
-└── AI_TYPE_GENERATOR.md           # Feature documentation
+├── EXAMPLES.md                    # Usage examples
+└── WARP.md                        # Warp AI integration docs
 ```
 
 ## 🔒 Security Features
@@ -230,7 +270,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 **Fundulea Robert Ionuț**
 
-- GitHub: [@robertfundulea](https://github.com/robertfundulea)
+- GitHub: [@RobertIonutF](https://github.com/RobertIonutF)
 
 ## 🙏 Acknowledgments
 
@@ -245,39 +285,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 *"Play with APIs, not with complexity"*
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
